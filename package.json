@@ -1,0 +1,61 @@
+{
+  "name": "instagram-web-api",
+  "version": "0.0.0",
+  "description": "Instagram Private Web API client written in JS",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": "jlobos/instagram-web-api",
+  "author": "Jesus Lobos <jlobitu@gmail.com> (https://jlobos.com)",
+  "scripts": {
+    "test": "xo && ava",
+    "precommit": "lint-staged"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "❤️",
+    "🤳",
+    "📷",
+    "instagram",
+    "private",
+    "api",
+    "web",
+    "upload",
+    "like",
+    "comment",
+    "save",
+    "follow",
+    "search",
+    "ig",
+    "photo",
+    "selfie"
+  ],
+  "xo": {
+    "extends": "prettier",
+    "rules": {
+      "camelcase": 0
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "xo --quiet",
+      "prettier --single-quote --no-semi --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "is-url": "^1.2.2",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5",
+    "tough-cookie": "^2.3.3"
+  },
+  "devDependencies": {
+    "ava": "^0.23.0",
+    "eslint-config-prettier": "^2.7.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.3.0",
+    "prettier": "^1.8.2",
+    "xo": "^0.18.2"
+  }
+}
