@@ -19,7 +19,7 @@ Simple, easy and very complete implementation of the Instagram private web API.
 ## Install
 
 ```bash
-npm install --save instagram-web-api
+npm install instagram-web-api
 ```
 
 ## Usage
