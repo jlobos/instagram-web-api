@@ -107,6 +107,7 @@ const credentialsFile = joinPath(__dirname, 'credentials.json')
   * [.changeProfilePhoto({ photo })](#changeprofilephotoparams)
   * [.deleteMedia({ mediaId })](#deletemediaparams)
   * [.uploadPhoto({ photo, caption })](#uploadphotoparams)
+  * [.uploadStory({ photo, caption })](#uploadstoryparams)
   * [.getLocationById({ locationId })](#getmediafeedbylocationparams)
   * [.getHashtag({ hashtag })](#getmediafeedbyhashtagparams)
   * [.locationSearch({ query, latitude, longitude })](#locationsearchparams)
@@ -219,6 +220,16 @@ const photo = 'https://scontent-scl1-1.cdninstagram.com/t51.2885-15/e35/16465198
 await client.uploadPhoto({ photo, caption: '❤️' })
 ```
 > Upload a photo to Instagram.
+- `params`
+  - `photo`: A `String` of path file or URL
+  - `caption`: The caption of photo. Default is ` `
+
+### uploadStory(params)
+```js
+const photo = 'https://scontent-scl1-1.cdninstagram.com/t51.2885-15/e35/16465198_658888867648924_4042368904838774784_n.jpg'
+await client.uploadStory({ photo })
+```
+> Upload a story to Instagram, it only work for images (`jpg`)
 - `params`
   - `photo`: A `String` of path file or URL
   - `caption`: The caption of photo. Default is ` `
