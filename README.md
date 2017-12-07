@@ -108,8 +108,8 @@ const credentialsFile = joinPath(__dirname, 'credentials.json')
   * [.deleteMedia({ mediaId })](#deletemediaparams)
   * [.uploadPhoto({ photo, caption })](#uploadphotoparams)
   * [.uploadStory({ photo, caption })](#uploadstoryparams)
-  * [.getLocationById({ locationId })](#getmediafeedbylocationparams)
-  * [.getHashtag({ hashtag })](#getmediafeedbyhashtagparams)
+  * [.getMediaFeedByLocation({ locationId })](#getmediafeedbylocationparams)
+  * [.getMediaFeedByHashtag({ hashtag })](#getmediafeedbyhashtagparams)
   * [.locationSearch({ query, latitude, longitude })](#locationsearchparams)
   * [.getMediaByShortcode({ shortcode })](#getmediabyshortcodeparams)
   * [.addComment({ mediaId, text })](#addcommentparams)
@@ -236,7 +236,7 @@ await client.uploadStory({ photo })
 
 ### getMediaFeedByLocation(params)
 ```js
-const { location } = await getMediaFeedByLocation({ locationId: '26914683' })
+const { location } = await client.getMediaFeedByLocation({ locationId: '26914683' })
 ```
 > Get latitude, longitude, top posts, last media, country, city, and more related to the location.
 - `params`
