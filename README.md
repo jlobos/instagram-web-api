@@ -96,7 +96,7 @@ const credentialsFile = joinPath(__dirname, 'credentials.json')
 ## API Reference
 
 * [Instagram](#instagramcredentials-opts)
-  * [new Instagram({ username, password, cookies }, { language })](#instagramcredentials-opts)
+  * [new Instagram({ username, password, cookies }, { language, proxy })](#instagramcredentials-opts)
   * [.login({ username, password })](#logincredentials)
   * [.logout()](#logout)
   * [.getHome()](#gethome)
@@ -137,6 +137,7 @@ const client = new Instagram({ username: '', password: '' }, { language: 'es-CL'
   - `cookies`: A `Array` of cookies, optional only is need for restore session. Default is `undefined`
 - `opts`
   - `language`: The language of response from API. Default is `en-US`
+  - `proxy`: `String` of a proxy to tunnel all requests. Default is `undefined` 
 
 ### login(credentials)
 ```js
