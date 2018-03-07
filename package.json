@@ -48,7 +48,8 @@
     "is-url": "^1.2.2",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
-    "tough-cookie": "^2.3.3"
+    "tough-cookie": "^2.3.3",
+    "useragent-from-seed": "^1.0.0"
   },
   "devDependencies": {
     "ava": "^0.24.0",
