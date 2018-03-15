@@ -20,7 +20,7 @@ test('credentials', t => {
 })
 
 test('getHome', async t => {
-  const { graphql: { user } } = await client.getHome()
+  const user = await client.getHome()
 
   t.true('id' in user)
   t.true('profile_pic_url' in user)
@@ -28,17 +28,16 @@ test('getHome', async t => {
 })
 
 test('getActivity', async t => {
-  const { graphql: { user } } = await client.getActivity()
+  const user = await client.getActivity()
 
   t.true('activity_feed' in user)
   t.true('edge_follow_requests' in user)
 })
 
 test('getProfile', async t => {
-  const { form_data } = await client.getProfile()
-  profile = form_data
+  profile = await client.getProfile()
 
-  t.is(typeof form_data, 'object')
+  t.is(typeof profile, 'object')
 })
 
 test.after('updateProfile', async t => {
@@ -66,7 +65,7 @@ test.after('updateProfile', async t => {
 })
 
 test('getMediaFeedByLocation', async t => {
-  const { location: { id, name } } = await client.getMediaFeedByLocation({
+  const { id, name } = await client.getMediaFeedByLocation({
     locationId: locations.Santiago.id
   })
 
@@ -75,33 +74,33 @@ test('getMediaFeedByLocation', async t => {
 })
 
 test('getMediaFeedByHashtag', async t => {
-  const { tag: { name } } = await client.getMediaFeedByHashtag({
+  const { name } = await client.getMediaFeedByHashtag({
     hashtag: tags.dog.name
   })
   t.is(name, tags.dog.name)
 })
 
 test('locationSearch', async t => {
-  const { status, venues } = await client.locationSearch({
+  const venues = await client.locationSearch({
     query: locations.Santiago.name,
     latitude: locations.Santiago.lat,
     longitude: locations.Santiago.lng
   })
 
-  t.is(status, 'ok')
   t.true(Array.isArray(venues))
 })
 
 test('getMediaByShortcode', async t => {
-  const { graphql: { shortcode_media } } = await client.getMediaByShortcode({
+  const shortcodeMedia = await client.getMediaByShortcode({
     shortcode: media.GraphImage.shortcode
   })
-  t.is(shortcode_media.__typename, 'GraphImage')
-  t.is(shortcode_media.id, media.GraphImage.id)
+
+  t.is(shortcodeMedia.__typename, 'GraphImage')
+  t.is(shortcodeMedia.id, media.GraphImage.id)
 })
 
 test('getUserByUsername', async t => {
-  const { user } = await client.getUserByUsername({
+  const user = await client.getUserByUsername({
     username: users.Instagram.username
   })
   t.is(user.id, users.Instagram.id)
