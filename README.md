@@ -177,7 +177,7 @@ const activity = await client.getActivity()
 
 ### getProfile()
 ```js
-const { form_data: profile } = await client.getProfile()
+const profile = await client.getProfile()
 ```
 > Get profile the account `first_name`, `last_name`, `email`, `username`, `phone_number`, `gender`, `birthday`, `biography`, `external_url` and `chaining_enabled`.
 
@@ -237,7 +237,7 @@ await client.uploadStory({ photo })
 
 ### getMediaFeedByLocation(params)
 ```js
-const { location } = await client.getMediaFeedByLocation({ locationId: '26914683' })
+const location = await client.getMediaFeedByLocation({ locationId: '26914683' })
 ```
 > Get latitude, longitude, top posts, last media, country, city, and more related to the location.
 - `params`
@@ -245,7 +245,7 @@ const { location } = await client.getMediaFeedByLocation({ locationId: '26914683
 
 ### getMediaFeedByHashtag(params)
 ```js
-const { tag } = client.getMediaFeedByHashtag({ hashtag: 'unicorn' })
+const tag = client.getMediaFeedByHashtag({ hashtag: 'unicorn' })
 ```
 > Explore last media and top posts feed related to a hashtag.
 - `params`
@@ -253,7 +253,7 @@ const { tag } = client.getMediaFeedByHashtag({ hashtag: 'unicorn' })
 
 ### locationSearch(params)
 ```js
-const { venues } = client.locationSearch({ query: 'chile', latitude: -33.45, longitude: -70.6667 })
+const venues = client.locationSearch({ query: 'chile', latitude: -33.45, longitude: -70.6667 })
 ```
 > Search vanues by latitude and longitude.
 - `params`
