@@ -107,6 +107,24 @@ test('getUserByUsername', async t => {
   t.is(user.username, users.Instagram.username)
 })
 
+test('getFollowers', async t => {
+  const followers = await client.getFollowers({
+    userId: users.Instagram.id
+  })
+
+  t.true('count' in followers)
+  t.true(Array.isArray(followers.data))
+})
+
+test('getFollowings', async t => {
+  const followings = await client.getFollowings({
+    userId: users.Instagram.id
+  })
+
+  t.true('count' in followings)
+  t.true(Array.isArray(followings.data))
+})
+
 test('addComment', async t => {
   const { status, id, text } = await client.addComment({
     mediaId: media.GraphImage.id,
