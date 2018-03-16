@@ -101,6 +101,8 @@ const credentialsFile = joinPath(__dirname, 'credentials.json')
   * [.logout()](#logout)
   * [.getHome()](#gethome)
   * [.getUserByUsername({ username })](#getuserbyusernameparams)
+  * [.getFollowers({ userId, first, after })](#getfollowers)
+  * [.getFollowings({ userId, first, after })](#getfollowings)
   * [.getActivity()](#getactivity)
   * [.getProfile()](#getprofile)
   * [.updateProfile({ name, email, username, phoneNumber, gender, biography, website, similarAccountSuggestions })](#updateprofileparams)
@@ -169,6 +171,26 @@ const me = await client.getUserByUsername({ username: client.credentials.usernam
 > Get user by username, this method not require authentication for public profiles.
 - `params`
   - `username`: The username of the profile
+
+### getFollowers(params)
+```js
+const followers = await client.getFollowers({ userId: '1284161654' })
+```
+> Get followers for given userId. Be aware that the response gets slightly altered for easier usage.
+- `params`
+  - `userId`: The user id
+  - `first`: Amount of followers to request. Default is `20`
+  - `after`: Optional `end_cursor` (`String`) for pagination.
+
+### getFollowings(params)
+```js
+const followings = await client.getFollowings({ userId: '1284161654' })
+```
+> Get followings for given userId. Be aware that the response gets slightly altered for easier usage.
+- `params`
+  - `userId`: The user id
+  - `first`: Amount of followings to request. Default is `20`
+  - `after`: Optional `end_cursor` (`String`) for pagination. 
 
 ### getActivity()
 ```js
