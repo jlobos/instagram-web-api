@@ -46,17 +46,17 @@
   },
   "dependencies": {
     "is-url": "^1.2.2",
-    "request": "^2.83.0",
+    "request": "^2.85.0",
     "request-promise-native": "^1.0.5",
-    "tough-cookie": "^2.3.3",
-    "useragent-from-seed": "^1.0.0"
+    "tough-cookie": "^2.3.4",
+    "useragent-from-seed": "^1.0.1"
   },
   "devDependencies": {
-    "ava": "^0.24.0",
+    "ava": "^0.25.0",
     "eslint-config-prettier": "^2.9.0",
     "husky": "^0.14.3",
-    "lint-staged": "^6.0.0",
-    "prettier": "^1.9.0",
-    "xo": "^0.18.2"
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.1",
+    "xo": "^0.20.3"
   }
 }
