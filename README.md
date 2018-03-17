@@ -116,6 +116,10 @@ const credentialsFile = joinPath(__dirname, 'credentials.json')
   * [.getMediaByShortcode({ shortcode })](#getmediabyshortcodeparams)
   * [.addComment({ mediaId, text })](#addcommentparams)
   * [.deleteComment({ mediaId, commentId })](#deletecommentparams)
+  * [.getChallenge({ challengeUrl })](#getchallengeparams)
+  * [.updateChallenge({ challengeUrl, choice, securityCode })](#updatechallengeparams)
+  * [.resetChallenge({ challengeUrl })](#resetchallengeparams)
+  * [.replayChallenge({ challengeUrl })](#replaychallengeparams)
   * [.approve({ userId })](#approveparams)
   * [.ignore({ userId })](#ignoreparams)
   * [.follow({ userId })](#followparams)
@@ -309,6 +313,43 @@ await client.deleteComment({ mediaId: '1442533050805297981', commentId: '1784890
 - `params`
   - `mediaId`: The media id
   - `commentId`: The comment id
+
+### getChallenge(params)
+```js
+await client.getChallenge({ challengeUrl: '/challenge/1284161654/a1B2c3d4E6/' })
+```
+> Get information about a challenge.
+- `params`
+  - `challengeUrl`: A `String` with a challenge path
+
+### updateChallenge(params)
+```js
+const challengeUrl = '/challenge/1284161654/a1B2c3d4E6/'
+
+await client.updateChallenge({ challengeUrl, choice: 0 })
+await client.updateChallenge({ challengeUrl, securityCode: 123456  })
+```
+> Request or submit a verifcation code for the given challenge.
+- `params`
+  - `challengeUrl`: A `String` with a challenge path
+  - `choice`: `Number` `0` for phone and `1` for email. Default is ``
+  - `securityCode`: `Number` the received verifcation code for the challenge. Default is ``
+
+### resetChallenge(params)
+```js
+await client.resetChallenge({ challengeUrl: '/challenge/1284161654/a1B2c3d4E6/' })
+```
+> Reset a challenge to start over again.
+- `params`
+  - `challengeUrl`: A `String` with a challenge path
+
+### replayChallenge(params)
+```js
+await client.replayChallenge({ challengeUrl: '/challenge/1284161654/a1B2c3d4E6/' })
+```
+> Request a new verifcation message.
+- `params`
+  - `challengeUrl`: A `String` with a challenge path
 
 ### approve(params)
 ```js
