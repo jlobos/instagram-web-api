@@ -329,11 +329,11 @@ const challengeUrl = '/challenge/1284161654/a1B2c3d4E6/'
 await client.updateChallenge({ challengeUrl, choice: 0 })
 await client.updateChallenge({ challengeUrl, securityCode: 123456  })
 ```
-> Request or submit a verifcation code for the given challenge.
+> Request or submit a verification code for the given challenge.
 - `params`
   - `challengeUrl`: A `String` with a challenge path
   - `choice`: `Number` `0` for phone and `1` for email. Default is ``
-  - `securityCode`: `Number` the received verifcation code for the challenge. Default is ``
+  - `securityCode`: `Number` the received verification code for the challenge. Default is ``
 
 ### resetChallenge(params)
 ```js
@@ -347,7 +347,7 @@ await client.resetChallenge({ challengeUrl: '/challenge/1284161654/a1B2c3d4E6/' 
 ```js
 await client.replayChallenge({ challengeUrl: '/challenge/1284161654/a1B2c3d4E6/' })
 ```
-> Request a new verifcation message.
+> Request a new verification message.
 - `params`
   - `challengeUrl`: A `String` with a challenge path
 
