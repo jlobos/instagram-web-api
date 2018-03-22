@@ -5,18 +5,20 @@ import { media, users, locations, tags } from './helpers'
 const { username, password } = process.env
 
 const client = new Instagram({ username, password })
-let credentials
+let authentication
 let commentId
 let profile
 
 test.before(async () => {
-  credentials = await client.login()
+  authentication = await client.login()
 })
 
-test('credentials', t => {
-  t.is(credentials.username, username)
-  t.is(credentials.password, password)
-  t.true(Array.isArray(credentials.cookies))
+test('authentication', t => {
+  t.is(authentication.status, 'ok')
+  t.is(client.credentials.username, username)
+  t.is(client.credentials.password, password)
+  t.true(authentication.authenticated)
+  t.true(Array.isArray(client.credentials.cookies))
 })
 
 test('getHome', async t => {

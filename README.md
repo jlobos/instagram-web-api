@@ -57,35 +57,24 @@ const client = new Instagram({ username, password })
 })()
 ```
 
-Save credentials to disk. The method `login` resolve an `Object` with credentials, this allows you to save in disk or any database:
+Save cookies to disk by using a `though-cookie` store.
 
 ```js
-// Native
-const { existsSync } = require('fs')
-const { join: joinPath } = require('path')
-
 // Packages
 const Instagram = require('instagram-web-api')
-const loadJSON = require('load-json-file')
-const writeJSON = require('write-json-file')
+const FileCookieStore = require('tough-cookie-filestore2')
 
-const credentialsFile = joinPath(__dirname, 'credentials.json')
+const { username, password } = process.env // Only required when no cookies are stored yet
+
+const cookieStore = new FileCookieStore('./cookies.json')
+const client = new Instagram({ username, password, cookieStore })
 
 ;(async () => {
-  let client
-
-  if (existsSync(credentialsFile)) {
-    client = new Instagram(await loadJSON(credentialsFile))
-  } else {
-    const { username, password } = process.env
-    client = new Instagram({ username, password })
-
-    const credentials = await client.login()
-    await writeJSON(credentialsFile, credentials)
-  }
-
   // URL or path of photo
-  const photo = 'https://scontent-scl1-1.cdninstagram.com/t51.2885-15/e35/22430378_307692683052790_5667315385519570944_n.jpg'
+  const photo =
+    'https://scontent-scl1-1.cdninstagram.com/t51.2885-15/e35/22430378_307692683052790_5667315385519570944_n.jpg'
+
+  await client.login()
 
   // Upload Photo
   const { media } = await client.uploadPhoto(photo)
@@ -149,8 +138,10 @@ const client = new Instagram({ username: '', password: '' }, { language: 'es-CL'
 ### login(credentials)
 ```js
 const { username, password, cookies } = await client.login({ username: '', password: '' })
+const { authenticated, user } = await client.login({ username: '', password: '' })
 ```
-> Login in the account, this method return an object with the credentials (username, password and cookies) for saving the session.
+
+> Login in the account, this method returns `user` (`true` when username is valid) and `authenticated` (`true` when login was successful)
 - `credentials`
   - `username`: The username of account
   - `password`: The password of account
