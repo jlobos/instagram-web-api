@@ -1,33 +1,13 @@
+import path from 'path'
 import test from 'ava'
+import FileCookieStore from 'tough-cookie-filestore'
 import Instagram from '../lib'
 import { media, users, locations, tags } from './helpers'
 
-const { username, password } = process.env
+const cookieStore = new FileCookieStore(path.join(__dirname, './cookies.json'))
 
-const client = new Instagram({ username, password })
-let authentication
+const client = new Instagram({ cookieStore })
 let commentId
-let profile
-
-test.before(async () => {
-  authentication = await client.login()
-})
-
-test('authentication', t => {
-  t.is(authentication.status, 'ok')
-  t.is(client.credentials.username, username)
-  t.is(client.credentials.password, password)
-  t.true(authentication.authenticated)
-  t.true(Array.isArray(client.credentials.cookies))
-})
-
-test('getHome', async t => {
-  const user = await client.getHome()
-
-  t.true('id' in user)
-  t.true('profile_pic_url' in user)
-  t.true('username' in user)
-})
 
 test('getActivity', async t => {
   const user = await client.getActivity()
@@ -37,33 +17,9 @@ test('getActivity', async t => {
 })
 
 test('getProfile', async t => {
-  profile = await client.getProfile()
+  const profile = await client.getProfile()
 
   t.is(typeof profile, 'object')
-})
-
-test.after('updateProfile', async t => {
-  const {
-    first_name: firstName,
-    email,
-    username,
-    phone_number: phoneNumber,
-    gender,
-    biography,
-    external_url: website,
-    chaining_enabled: similarAccountSuggestions
-  } = profile
-  const { status } = await client.updateProfile({
-    firstName,
-    email,
-    username,
-    phoneNumber,
-    gender,
-    biography,
-    website,
-    similarAccountSuggestions
-  })
-  t.is(status, 'ok')
 })
 
 test('getMediaFeedByLocation', async t => {

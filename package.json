@@ -7,12 +7,17 @@
   "repository": "jlobos/instagram-web-api",
   "author": "Jesus Lobos <jlobitu@gmail.com> (https://jlobos.com)",
   "scripts": {
+    "lint": "xo",
     "test": "xo && ava",
     "precommit": "lint-staged"
   },
   "files": [
     "lib"
   ],
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
   "keywords": [
     "❤️",
     "🤳",
@@ -57,6 +62,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
     "prettier": "^1.11.1",
+    "tough-cookie-filestore": "0.0.1",
     "xo": "^0.20.3"
   }
 }
