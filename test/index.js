@@ -77,13 +77,13 @@ test('getStoryReels', async t => {
   t.true(Array.isArray(emptyReels))
   t.true(emptyReels.length === 0)
 
-  const nonEmptyReels = await client.getStoryReels({ reelIds: users.Maluma.id })
+  const nonEmptyReels = await client.getStoryReels({ reelIds: users.Xenia.id })
   t.true(Array.isArray(nonEmptyReels))
 })
 
 test('getStoryItemsByUsername', async t => {
   const storyItems = await client.getStoryItemsByUsername({
-    username: users.Maluma.username
+    username: users.Xenia.username
   })
 
   t.true(Array.isArray(storyItems))
