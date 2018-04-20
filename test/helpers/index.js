@@ -19,6 +19,12 @@ module.exports = {
       id: '44059601',
       pk: 44059601,
       username: 'maluma'
+    },
+    Xenia: {
+      full_name: 'XENIA',
+      id: '184028108',
+      pk: 184028108,
+      username: 'xenia'
     }
   },
   locations: {

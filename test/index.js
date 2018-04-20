@@ -65,6 +65,72 @@ test('getUserByUsername', async t => {
   t.is(user.username, users.Instagram.username)
 })
 
+test('getStoryReelFeed', async t => {
+  const reels = await client.getStoryReelFeed()
+
+  t.true(Array.isArray(reels))
+  t.true(reels.length > 0)
+})
+
+test('getStoryReels', async t => {
+  const emptyReels = await client.getStoryReels()
+  t.true(Array.isArray(emptyReels))
+  t.true(emptyReels.length === 0)
+
+  const nonEmptyReels = await client.getStoryReels({ reelIds: users.Xenia.id })
+  t.true(Array.isArray(nonEmptyReels))
+})
+
+test('getStoryItemsByUsername', async t => {
+  const storyItems = await client.getStoryItemsByUsername({
+    username: users.Xenia.username
+  })
+
+  t.true(Array.isArray(storyItems))
+})
+
+test('getStoryItemsByHashtag', async t => {
+  const storyItems = await client.getStoryItemsByHashtag({
+    hashtag: tags.dog.name
+  })
+
+  t.true(Array.isArray(storyItems))
+  t.true(storyItems.length > 0)
+})
+
+test('getStoryItemsByLocation', async t => {
+  const storyItems = await client.getStoryItemsByLocation({
+    locationId: locations.Santiago.id
+  })
+
+  t.true(Array.isArray(storyItems))
+  t.true(storyItems.length > 0)
+})
+
+test('getStoryItemsByReel', async t => {
+  const storyItems = await client.getStoryItemsByReel({
+    reelId: users.Maluma.id
+  })
+
+  t.true(Array.isArray(storyItems))
+})
+
+test('markStoryItemAsSeen', async t => {
+  const storyItem = (await client.getStoryItemsByHashtag({
+    hashtag: tags.dog.name
+  }))[0]
+
+  const { status } = await client.markStoryItemAsSeen({
+    reelId: storyItem.owner.id,
+    reelMediaOwnerId: storyItem.owner.id,
+    reelMediaId: storyItem.id,
+    reelMediaTakenAt: storyItem.taken_at_timestamp,
+    viewSeenAt: storyItem.taken_at_timestamp
+  })
+
+  t.is(status, 'ok')
+})
+
 test('getFollowers', async t => {
   const followers = await client.getFollowers({
     userId: users.Instagram.id
