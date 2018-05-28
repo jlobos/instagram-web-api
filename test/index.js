@@ -65,6 +65,21 @@ test('getUserByUsername', async t => {
   t.is(user.username, users.Instagram.username)
 })
 
+test.after('getUserByUsername', async t => {
+  const pagesCount = 2
+  const postsPerPage = 30
+  const user = await client.getUserByUsername({
+    username: users.Instagram.username,
+    takePostPages: pagesCount,
+    postsPerPage
+  })
+  t.is(user.id, users.Instagram.id)
+  t.is(user.username, users.Instagram.username)
+  t.true(
+    user.edge_owner_to_timeline_media.edges.length === pagesCount * postsPerPage
+  )
+})
+
 test('getStoryReelFeed', async t => {
   const reels = await client.getStoryReelFeed()
 
