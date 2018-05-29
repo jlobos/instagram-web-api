@@ -8,6 +8,7 @@ const cookieStore = new FileCookieStore(path.join(__dirname, './cookies.json'))
 
 const client = new Instagram({ cookieStore })
 let commentId
+let nextPageToken
 
 test('getActivity', async t => {
   const user = await client.getActivity()
@@ -61,23 +62,23 @@ test('getUserByUsername', async t => {
   const user = await client.getUserByUsername({
     username: users.Instagram.username
   })
+  nextPageToken = user.edge_owner_to_timeline_media.page_info.end_cursor
   t.is(user.id, users.Instagram.id)
   t.is(user.username, users.Instagram.username)
 })
 
 test.after('getUserByUsername', async t => {
-  const pagesCount = 2
-  const postsPerPage = 30
-  const user = await client.getUserByUsername({
-    username: users.Instagram.username,
-    takePostPages: pagesCount,
-    postsPerPage
+  const perPage = 30
+  const user = await client._getPosts({
+    userId: users.Instagram.id,
+    perPage,
+    nextPageToken
   })
-  t.is(user.id, users.Instagram.id)
-  t.is(user.username, users.Instagram.username)
-  t.true(
-    user.edge_owner_to_timeline_media.edges.length === pagesCount * postsPerPage
+  t.is(
+    user.edge_owner_to_timeline_media.edges[0].node.owner.id,
+    users.Instagram.id
   )
+  t.true(user.edge_owner_to_timeline_media.edges.length === perPage)
 })
 
 test('getStoryReelFeed', async t => {
