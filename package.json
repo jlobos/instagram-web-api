@@ -39,7 +39,9 @@
   "xo": {
     "extends": "prettier",
     "rules": {
-      "camelcase": 0
+      "camelcase": 0,
+      "no-await-in-loop": 0,
+      "no-unmodified-loop-condition": 0
     }
   },
   "lint-staged": {
