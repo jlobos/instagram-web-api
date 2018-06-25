@@ -1,10 +1,10 @@
 {
-  "name": "@revall/instagram-web-api",
-  "version": "2.0.5",
+  "name": "instagram-web-api",
+  "version": "2.0.1",
   "description": "Instagram Private Web API client written in JS",
   "license": "MIT",
   "main": "lib/index.js",
-  "repository": "revall/instagram-web-api",
+  "repository": "jlobos/instagram-web-api",
   "author": "Jesus Lobos <jlobitu@gmail.com> (https://jlobos.com)",
   "scripts": {
     "lint": "xo",
