@@ -120,6 +120,8 @@ const client = new Instagram({ username, password, cookieStore })
   * [.save({ mediaId })](#saveparams)
   * [.unsave({ mediaId })](#unsaveparams)
   * [.search({ query, context })](#searchparams)
+  * [.getHastagPhotos({hashtag, first, after})](#gethastagphotosparams)
+  * [.getPhotosByUsername({username, first, after})](#getphotosbyusernameparams)
 
 ### Instagram(credentials, opts)
 ```js
@@ -430,6 +432,28 @@ await client.search({ query: 'unicorn' })
 - `params`
   - `query`: Query
   - `context`: The context of search, `hashtag`, `place`, `user` or `blended`. Default is `blended`
+  
+  
+  
+### getHastagPhotos(params)
+```js
+await client.getHastagPhotos({ hashtag: 'unicorn' })
+```
+> Get photos for hashtag.
+- `params`
+  - `hashtag`: A `String` with a hashtag
+  - `first`:  A `number` of records to return
+  - `after`: The query cursor `String` for pagination
+  
+### getPhotosByUsername(params)
+  ```js
+  await client.getPhotosByUsername({ username: 'unicorn' })
+  ```
+  > Gets user photos.
+  - `params`
+    - `username`: A `String` with a hashtag
+    - `first`:  A `number` of records to return
+    - `after`: The query cursor `String` for pagination
 
 ## License
 
