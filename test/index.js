@@ -234,7 +234,7 @@ test('getPhotosByUsername', async t => {
   t.is(status, 'ok')
 })
 
-test('getHashtagPhotos', async t => {
+test('getPhotosByHashtag', async t => {
   const { status } = await client.search({ hashtag: 'Instagram' })
   t.is(status, 'ok')
 })
