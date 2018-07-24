@@ -120,7 +120,7 @@ const client = new Instagram({ username, password, cookieStore })
   * [.save({ mediaId })](#saveparams)
   * [.unsave({ mediaId })](#unsaveparams)
   * [.search({ query, context })](#searchparams)
-  * [.getHastagPhotos({hashtag, first, after})](#gethastagphotosparams)
+  * [.getPhotosByHashtag({hashtag, first, after})](#gethastagphotosparams)
   * [.getPhotosByUsername({username, first, after})](#getphotosbyusernameparams)
 
 ### Instagram(credentials, opts)
@@ -435,9 +435,9 @@ await client.search({ query: 'unicorn' })
   
   
   
-### getHastagPhotos(params)
+### getPhotosByHashtag(params)
 ```js
-await client.getHastagPhotos({ hashtag: 'unicorn' })
+await client.getPhotosByHashtag({ hashtag: 'unicorn' })
 ```
 > Get photos for hashtag.
 - `params`
