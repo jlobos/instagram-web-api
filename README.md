@@ -85,7 +85,7 @@ const client = new Instagram({ username, password, cookieStore })
 ## API Reference
 
 * [Instagram](#instagramcredentials-opts)
-  * [new Instagram({ username, password, cookies, cookieStore }, { language, proxy })](#instagramcredentials-opts)
+  * [new Instagram({ username, password, cookieStore }, { language, proxy })](#instagramcredentials-opts)
   * [.login({ username, password })](#logincredentials)
   * [.logout()](#logout)
   * [.getHome()](#gethome)
@@ -131,7 +131,6 @@ const client = new Instagram({ username: '', password: '' }, { language: 'es-CL'
 - `credentials`
   - `username`: The username of account
   - `password`: The password of account
-  - `cookies`: An optional `Array` of cookies, only needed for restore session. Default is `undefined`
   - `cookieStore`: An optional [`though-cookie`](https://www.npmjs.com/package/tough-cookie) cookie storage, which allows for persistent cookies. Default is `undefined`
 - `opts`
   - `language`: The language of response from API. Default is `en-US`
