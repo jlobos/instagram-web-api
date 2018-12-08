@@ -156,9 +156,11 @@ await client.logout()
 
 ### getHome()
 ```js
-const feed = await client.getHome()
+const feed = await client.getHome('KGEAxpEdUwUrxxoJvxRoQeXFGooSlADHZ8UaDdSWbnOIxxoUUhyciJ7EGlxNlZjaYcUaXTgUM00qyBrgBhUsLezIGqVTlxqausga5W-fVax9xRryaBdN1EnIGvdQFgzxoMgaFoLO7v7xWQA=')
 ```
 > Get home feed timeline, media shared by the people you follow.
+- `params`
+  - `end_cursor` (`String`) for pagination
 
 ### getUserByUsername(params)
 ```js
