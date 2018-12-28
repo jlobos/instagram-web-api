@@ -297,6 +297,7 @@ await client.addComment({ mediaId: 1442533050805297981, text: 'awesome' })
 - `params`
   - `mediaId`: The media id
   - `text`: Comment text
+  - `replyToCommentId`: Optional comment id to which to reply
 
 ### deleteComment(params)
 ```js
