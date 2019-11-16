@@ -1,6 +1,6 @@
 {
   "name": "instagram-web-api",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Instagram Private Web API client written in JS",
   "license": "MIT",
   "main": "lib/index.js",
@@ -52,18 +52,18 @@
     ]
   },
   "dependencies": {
-    "is-url": "^1.2.2",
-    "request": "^2.85.0",
-    "request-promise-native": "^1.0.5",
-    "tough-cookie": "^2.3.4",
+    "is-url": "^1.2.4",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.8",
+    "tough-cookie": "^3.0.1",
     "useragent-from-seed": "^1.0.1"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
-    "eslint-config-prettier": "^2.9.0",
+    "ava": "^2.4.0",
+    "eslint-config-prettier": "^2.10.0",
     "husky": "^0.14.3",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.11.1",
+    "lint-staged": "^9.4.3",
+    "prettier": "^1.19.1",
     "tough-cookie-filestore": "0.0.1",
     "tough-cookie-filestore2": "^1.0.0",
     "xo": "^0.20.3"
