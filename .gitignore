@@ -2,4 +2,3 @@
 node_modules
 test/credentials.json
 test/cookies.json
-test/save-cookie.js
