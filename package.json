@@ -8,8 +8,12 @@
   "author": "Jesus Lobos <jlobitu@gmail.com> (https://jlobos.com)",
   "scripts": {
     "lint": "xo",
-    "test": "xo && ava",
-    "precommit": "lint-staged"
+    "test": "xo && ava"
+    },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "files": [
     "lib"
@@ -61,7 +65,7 @@
   "devDependencies": {
     "ava": "^2.4.0",
     "eslint-config-prettier": "^2.10.0",
-    "husky": "^0.14.3",
+    "husky": "^3.0.9",
     "lint-staged": "^9.4.3",
     "prettier": "^1.19.1",
     "tough-cookie-filestore": "0.0.1",
