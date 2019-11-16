@@ -4,8 +4,9 @@
 
 <p align="center">
   <a href="https://www.npmjs.com/package/instagram-web-api"><img alt="NPM version" src="https://badge.fury.io/js/instagram-web-api.svg"></a>
-  <a href="https://travis-ci.org/jlobos/instagram-web-api"><img alt="Build Status" src="https://travis-ci.org/jlobos/instagram-web-api.svg?branch=master"></a>
+  <a href="https://circleci.com/gh/jlobos/instagram-web-api"><img alt="Build Status" src="https://circleci.com/gh/jlobos/instagram-web-api.svg?style=shield"></a>
   <a href="https://github.com/sindresorhus/xo"><img alt="XO code style" src="https://img.shields.io/badge/code_style-XO-5ed9c7.svg"></a>
+  
 </p>
 
 ### A Instagram Private Web API client 🤳✨❤️

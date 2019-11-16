@@ -1,14 +1,20 @@
-import path from 'path'
 import test from 'ava'
-import FileCookieStore from 'tough-cookie-filestore'
 import Instagram from '../lib'
 import { media, users, locations, tags } from '../helpers'
 
-const cookieStore = new FileCookieStore(path.join(__dirname, './cookies.json'))
+const { USER_NAME, PASSWORD } = process.env
 
-const client = new Instagram({ cookieStore })
+const client = new Instagram({ username: USER_NAME, password: PASSWORD })
+console.log(USER_NAME, PASSWORD)
+
 let commentId
 let nextPageToken
+
+test.before(async t => {
+  await client.login()
+  const profile = await client.getProfile()
+  t.truthy(profile)
+})
 
 test('getActivity', async t => {
   const user = await client.getActivity()
