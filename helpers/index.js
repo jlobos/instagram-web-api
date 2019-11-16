@@ -27,9 +27,10 @@ module.exports = {
       username: 'xenia'
     }
   },
+
   locations: {
     Santiago: {
-      id: '26914683',
+      id: '112371848779363',
       pk: 26914683,
       name: 'Santiago, Chile',
       address: '',

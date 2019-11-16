@@ -2,7 +2,7 @@ import path from 'path'
 import test from 'ava'
 import FileCookieStore from 'tough-cookie-filestore'
 import Instagram from '../lib'
-import { media, users, locations, tags } from './helpers'
+import { media, users, locations, tags } from '../helpers'
 
 const cookieStore = new FileCookieStore(path.join(__dirname, './cookies.json'))
 
@@ -132,9 +132,11 @@ test('getStoryItemsByReel', async t => {
 })
 
 test('markStoryItemAsSeen', async t => {
-  const storyItem = (await client.getStoryItemsByHashtag({
-    hashtag: tags.dog.name
-  }))[0]
+  const storyItem = (
+    await client.getStoryItemsByHashtag({
+      hashtag: tags.dog.name
+    })
+  )[0]
 
   const { status } = await client.markStoryItemAsSeen({
     reelId: storyItem.owner.id,
