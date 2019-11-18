@@ -1,4 +1,2 @@
 .idea/
 node_modules
-test/credentials.json
-test/cookies.json
