@@ -276,7 +276,7 @@ const tag = client.getMediaFeedByHashtag({ hashtag: 'unicorn' })
 ```js
 const venues = client.locationSearch({ query: 'chile', latitude: -33.45, longitude: -70.6667 })
 ```
-> Search vanues by latitude and longitude.
+> Search venues by latitude and longitude.
 - `params`
   - `latitude`: Latitude
   - `longitude`: Longitude
