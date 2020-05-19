@@ -246,3 +246,8 @@ test('getPhotosByHashtag', async t => {
   const { status } = await client.search({ hashtag: 'Instagram' })
   t.is(status, 'ok')
 })
+
+test('getPrivateProfilesFollowRequests', async t => {
+  const { page_name } = await client.getPrivateProfilesFollowRequests()
+  t.is(page_name, 'current_follow_requests')
+})
