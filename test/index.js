@@ -251,3 +251,8 @@ test('getPrivateProfilesFollowRequests', async t => {
   const { page_name } = await client.getPrivateProfilesFollowRequests()
   t.is(page_name, 'current_follow_requests')
 })
+
+test('getChainsData', async t => {
+  const response = await client.getChainsData({ userId: users.Maluma.id })
+  t.true(Array.isArray(response))
+})

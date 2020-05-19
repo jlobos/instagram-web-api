@@ -124,6 +124,7 @@ const client = new Instagram({ username, password, cookieStore })
   * [.getPhotosByHashtag({hashtag, first, after})](#gethastagphotosparams)
   * [.getPhotosByUsername({username, first, after})](#getphotosbyusernameparams)
   * [.getPrivateProfilesFollowRequests(cursor)](#getPrivateProfilesFollowRequests)
+  * [.getChainsData({ userId })](#getChainsData)
 
 ### Instagram(credentials, opts)
 ```js
@@ -461,6 +462,14 @@ await client.getPhotosByHashtag({ hashtag: 'unicorn' })
   ```js
   await client.getPrivateProfilesFollowRequests(cursor)
   ```
+
+### getChainsData
+  ```js
+  await client.getChainsData({ userId })
+  ```
+  > This will return the similar accounts, that you see, when you click on the ARROW in a profile.
+- `params`
+  - `userId`: The user id
 
 ## License
 
