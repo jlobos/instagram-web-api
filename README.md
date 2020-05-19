@@ -86,7 +86,7 @@ const client = new Instagram({ username, password, cookieStore })
 ## API Reference
 
 * [Instagram](#instagramcredentials-opts)
-  * [new Instagram({ username, password, cookieStore }, { language, proxy })](#instagramcredentials-opts)
+  * [new Instagram({ username, password, cookieStore }, { language, proxy, requestOptions })](#instagramcredentials-opts)
   * [.login({ username, password })](#logincredentials)
   * [.logout()](#logout)
   * [.getHome()](#gethome)
