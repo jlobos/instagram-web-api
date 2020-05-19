@@ -86,7 +86,7 @@ const client = new Instagram({ username, password, cookieStore })
 ## API Reference
 
 * [Instagram](#instagramcredentials-opts)
-  * [new Instagram({ username, password, cookieStore }, { language, proxy })](#instagramcredentials-opts)
+  * [new Instagram({ username, password, cookieStore }, { language, proxy, requestOptions })](#instagramcredentials-opts)
   * [.login({ username, password })](#logincredentials)
   * [.logout()](#logout)
   * [.getHome()](#gethome)
@@ -123,6 +123,7 @@ const client = new Instagram({ username, password, cookieStore })
   * [.search({ query, context })](#searchparams)
   * [.getPhotosByHashtag({hashtag, first, after})](#gethastagphotosparams)
   * [.getPhotosByUsername({username, first, after})](#getphotosbyusernameparams)
+  * [.getPrivateProfilesFollowRequests(cursor)](#getPrivateProfilesFollowRequests)
 
 ### Instagram(credentials, opts)
 ```js
@@ -455,6 +456,11 @@ await client.getPhotosByHashtag({ hashtag: 'unicorn' })
     - `username`: A `String` with a hashtag
     - `first`:  A `number` of records to return
     - `after`: The query cursor `String` for pagination
+
+### getPrivateProfilesFollowRequests
+  ```js
+  await client.getPrivateProfilesFollowRequests(cursor)
+  ```
 
 ## License
 
