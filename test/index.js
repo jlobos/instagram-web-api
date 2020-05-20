@@ -256,3 +256,20 @@ test('getChainsData', async t => {
   const response = await client.getChainsData({ userId: users.Maluma.id })
   t.true(Array.isArray(response))
 })
+
+test('getMediaComments', async t => {
+  const response = await client.getMediaComments({
+    shortcode: 'BWl6P',
+    first: 12
+  })
+  t.true(Number.isInteger(response.count))
+  t.true(Array.isArray(response.edges))
+  t.true(typeof response.page_info === 'object')
+})
+
+test('getMediaLikes', async t => {
+  const response = await client.getMediaLikes({ shortcode: 'BWl6P', first: 12 })
+  t.true(Number.isInteger(response.count))
+  t.true(Array.isArray(response.edges))
+  t.true(typeof response.page_info === 'object')
+})

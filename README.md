@@ -125,6 +125,8 @@ const client = new Instagram({ username, password, cookieStore })
   * [.getPhotosByUsername({username, first, after})](#getphotosbyusernameparams)
   * [.getPrivateProfilesFollowRequests(cursor)](#getPrivateProfilesFollowRequests)
   * [.getChainsData({ userId })](#getChainsData)
+  * [.getMediaLikes({ shortcode, first, after })](#getMediaLikesParams)
+  * [.getMediaComments({ shortcode, first, after })](#getMediaCommentsParams)
 
 ### Instagram(credentials, opts)
 ```js
@@ -470,6 +472,42 @@ await client.getPhotosByHashtag({ hashtag: 'unicorn' })
   > This will return the similar accounts, that you see, when you click on the ARROW in a profile.
 - `params`
   - `userId`: The user id
+  
+### getMediaLikes(params)
+  ```js
+  await client.getMediaLikes({ shortcode: 'B-0000000', first: '49', after: '' })
+  ```
+  > This will return the media likes.
+  - `params`
+    - `shortcode`: The shortcode media like this: https://www.instagram.com/p/B-00000000/, only put shortcode like this : B-000000000
+    - `first`:  A `number` of records to return max is `49`
+    - `after`: The query cursor `String` for pagination
+
+### getMediaComments(params)
+  ```js
+  await client.getMediaComments({ shortcode: 'B-0000000', first: '12', after: '' }).catch((error) => {
+    console.log(error);
+  })
+  .then((response) => {
+    console.log(response);
+  });
+  
+  //The query cursor 'after' maybe return an array, if array you need to convert like this: 
+  let pointer = response.page_info.end_cursor;
+  // this will try to convert array to json stringify
+	try{
+			pointer = JSON.parse(pointer);
+			pointer = JSON.stringify(pointer);
+	}catch(e){
+			console.log('Pointer is not array!, don't need to be converted!');
+	}
+  
+  ```
+  > This will return the media comments.
+  - `params`
+    - `shortcode`: The shortcode media like this: https://www.instagram.com/p/B-00000000/, only put shortcode like this : B-000000000
+    - `first`:  A `number` of records to return max is `49`
+    - `after`: The query cursor `String` for pagination
 
 ## License
 
