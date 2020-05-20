@@ -273,3 +273,10 @@ test('getMediaLikes', async t => {
   t.true(Array.isArray(response.edges))
   t.true(typeof response.page_info === 'object')
 })
+
+test('getHome', async t => {
+  const { status } = await client.getHome(
+    'KGEAxpEdUwUrxxoJvxRoQeXFGooSlADHZ8UaDdSWbnOIxxoUUhyciJ7EGlxNlZjaYcUaXTgUM00qyBrgBhUsLezIGqVTlxqausga5W-fVax9xRryaBdN1EnIGvdQFgzxoMgaFoLO7v7xWQA='
+  )
+  t.is(status, 'ok')
+})
