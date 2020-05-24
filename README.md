@@ -127,6 +127,9 @@ const client = new Instagram({ username, password, cookieStore })
   * [.getChainsData({ userId })](#getChainsData)
   * [.getMediaLikes({ shortcode, first, after })](#getMediaLikesParams)
   * [.getMediaComments({ shortcode, first, after })](#getMediaCommentsParams)
+  * [.likeComment({ commentId })](#likeCommentParams)
+  * [.unlikeComment({ commentId })](#unlikeCommentParams)
+  * [.getUserMediaTagged({ userId, first, after })](#getUserMediaTaggedParams)
 
 ### Instagram(credentials, opts)
 ```js
@@ -498,16 +501,42 @@ await client.getPhotosByHashtag({ hashtag: 'unicorn' })
   let pointer = response.page_info.end_cursor;
   // this will try to convert array to json stringify
 	try{
-			pointer = JSON.parse(pointer);
-			pointer = JSON.stringify(pointer);
+	    pointer = JSON.parse(pointer);
+	    pointer = JSON.stringify(pointer);
 	}catch(e){
-			console.log('Pointer is not array!, don't need to be converted!');
+	    console.log('Pointer is not array!, don't need to be converted!');
 	}
   
   ```
   > This will return the media comments.
   - `params`
-    - `shortcode`: The shortcode media like this: https://www.instagram.com/p/B-00000000/, only put shortcode like this : B-000000000
+    - `shortcode`: The shortcode media
+    - `first`:  A `number` of records to return max is `49`
+    - `after`: The query cursor `String` for pagination
+    
+    ### likeComment(params)
+```js
+await client.likeComment({ commentId: '1442533050805297981' })
+```
+> Like a comment specific in media.
+- `params`
+  - `commentId`: The comment id
+
+### unlikeComment(params)
+```js
+await client.likeComment({ commentId: '1442533050805297981' })
+```
+> Unlike a comment specific in media.
+- `params`
+  - `commentId`: The comment id
+  
+### getUserMediaTagged(params)
+  ```js
+  await client.getUserMediaTagged({ id, first, after })
+  ```
+  > This will return the user media tagged.
+  - `params`
+    - `id`: The user account target id
     - `first`:  A `number` of records to return max is `49`
     - `after`: The query cursor `String` for pagination
 
