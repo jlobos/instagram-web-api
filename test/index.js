@@ -285,7 +285,7 @@ test.after('unlikeComment', async t => {
 })
 
 test('getUserMediaTagged', async t => {
-  const response = await client.getUserMediaTagged({ id: users.Maluma.id })
+  const response = await client.getUserMediaTagged({ id: users.Maluma.id, first: 12 })
   t.true(Number.isInteger(response.count))
   t.true(Array.isArray(response.edges))
   t.true(typeof response.page_info === 'object')
