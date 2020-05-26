@@ -1,6 +1,6 @@
 {
   "name": "instagram-web-api",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Instagram Private Web API client written in JS",
   "license": "MIT",
   "main": "lib/index.js",
@@ -60,7 +60,9 @@
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8",
     "tough-cookie": "^3.0.1",
-    "useragent-from-seed": "^1.0.1"
+    "useragent-from-seed": "^1.0.1",
+    "axios": "^0.19.2",
+    "image-size": "^0.8.3"
   },
   "devDependencies": {
     "ava": "^2.4.0",
