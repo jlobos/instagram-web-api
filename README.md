@@ -78,7 +78,7 @@ const client = new Instagram({ username, password, cookieStore })
   await client.login()
 
   // Upload Photo
-  const { media } = await client.uploadPhoto(photo)
+  const { media } = await client.uploadPhoto({photo, caption, configureLocale: 'feed')
   console.log(`https://www.instagram.com/p/${media.code}/`)
 })()
 ```
@@ -99,7 +99,6 @@ const client = new Instagram({ username, password, cookieStore })
   * [.changeProfilePhoto({ photo })](#changeprofilephotoparams)
   * [.deleteMedia({ mediaId })](#deletemediaparams)
   * [.uploadPhoto({ photo, caption })](#uploadphotoparams)
-  * [.uploadStory({ photo, caption })](#uploadstoryparams)
   * [.getMediaFeedByLocation({ locationId })](#getmediafeedbylocationparams)
   * [.getMediaFeedByHashtag({ hashtag })](#getmediafeedbyhashtagparams)
   * [.locationSearch({ query, latitude, longitude })](#locationsearchparams)
