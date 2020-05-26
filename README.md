@@ -71,9 +71,9 @@ const cookieStore = new FileCookieStore('./cookies.json')
 const client = new Instagram({ username, password, cookieStore })
 
 ;(async () => {
-  // URL or path of photo
+  // path of photo cannot be a url
   const photo =
-    'https://scontent-scl1-1.cdninstagram.com/t51.2885-15/e35/22430378_307692683052790_5667315385519570944_n.jpg'
+    './myphoto.jpg'
 
   await client.login()
 
