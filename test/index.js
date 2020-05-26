@@ -290,3 +290,10 @@ test('unlikeComment', async t => {
   const { status } = await client.unlikeComment('17908592542443466')
   t.is(status, 'ok')
 })
+
+test('getUserMediaTagged', async t => {
+  const response = await client.getUserMediaTagged({ userId: users.Maluma.id, first: 12 })
+  t.true(Number.isInteger(response.count))
+  t.true(Array.isArray(response.edges))
+  t.true(typeof response.page_info === 'object')
+})
