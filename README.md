@@ -71,14 +71,14 @@ const cookieStore = new FileCookieStore('./cookies.json')
 const client = new Instagram({ username, password, cookieStore })
 
 ;(async () => {
-  // URL or path of photo
+  // URL or path of photo, all formats supported, api will be convert all formats to jpeg.
   const photo =
     'https://scontent-scl1-1.cdninstagram.com/t51.2885-15/e35/22430378_307692683052790_5667315385519570944_n.jpg'
 
   await client.login()
 
-  // Upload Photo
-  const { media } = await client.uploadPhoto(photo)
+  // Upload Photo to feed or story configureLocale: 'feed' or 'story'
+  const { media } = await client.uploadPhoto({photo: photo, caption: 'testing', configureLocale: 'feed'})
   console.log(`https://www.instagram.com/p/${media.code}/`)
 })()
 ```
@@ -98,8 +98,7 @@ const client = new Instagram({ username, password, cookieStore })
   * [.updateProfile({ name, email, username, phoneNumber, gender, biography, website, similarAccountSuggestions })](#updateprofileparams)
   * [.changeProfilePhoto({ photo })](#changeprofilephotoparams)
   * [.deleteMedia({ mediaId })](#deletemediaparams)
-  * [.uploadPhoto({ photo, caption })](#uploadphotoparams)
-  * [.uploadStory({ photo, caption })](#uploadstoryparams)
+  * [.uploadPhoto({ photo, caption, configureLocale: 'feed' })](#uploadphotoparams)
   * [.getMediaFeedByLocation({ locationId })](#getmediafeedbylocationparams)
   * [.getMediaFeedByHashtag({ hashtag })](#getmediafeedbyhashtagparams)
   * [.locationSearch({ query, latitude, longitude })](#locationsearchparams)
@@ -127,6 +126,9 @@ const client = new Instagram({ username, password, cookieStore })
   * [.getChainsData({ userId })](#getChainsData)
   * [.getMediaLikes({ shortcode, first, after })](#getMediaLikesParams)
   * [.getMediaComments({ shortcode, first, after })](#getMediaCommentsParams)
+  * [.likeComment({ commentId })](#likeCommentParams)
+  * [.unlikeComment({ commentId })](#unlikeCommentParams)
+  * [.getUserMediaTagged({ id, first, after })](#getUserMediaTaggedParams)
 
 ### Instagram(credentials, opts)
 ```js
@@ -244,22 +246,13 @@ await client.deleteMedia({ mediaId: '1442533050805297981' })
 ### uploadPhoto(params)
 ```js
 const photo = 'https://scontent-scl1-1.cdninstagram.com/t51.2885-15/e35/16465198_658888867648924_4042368904838774784_n.jpg'
-await client.uploadPhoto({ photo, caption: '❤️' })
+await client.uploadPhoto({ photo: photo, caption: '❤️', configureLocale: 'feed' })
 ```
 > Upload a photo to Instagram.
 - `params`
-  - `photo`: A `String` of path file or URL
-  - `caption`: The caption of photo. Default is ` `
-
-### uploadStory(params)
-```js
-const photo = 'https://scontent-scl1-1.cdninstagram.com/t51.2885-15/e35/16465198_658888867648924_4042368904838774784_n.jpg'
-await client.uploadStory({ photo })
-```
-> Upload a story to Instagram, it only work for images (`jpg`)
-- `params`
-  - `photo`: A `String` of path file or URL
-  - `caption`: The caption of photo. Default is ` `
+  - `photo`: A `String` of path file or URL, all formats supported, api will be convert all formats to jpeg.
+  - `caption`: The caption of photo. Default is blank
+  - `configureLocale`: `story` or `feed` posting. 
 
 ### getMediaFeedByLocation(params)
 ```js
@@ -481,7 +474,7 @@ await client.getPhotosByHashtag({ hashtag: 'unicorn' })
   ```
   > This will return the media likes.
   - `params`
-    - `shortcode`: The shortcode media like this: https://www.instagram.com/p/B-00000000/, only put shortcode like this : B-000000000
+    - `shortcode`: The shortcode media
     - `first`:  A `number` of records to return max is `49`
     - `after`: The query cursor `String` for pagination
 
@@ -497,20 +490,42 @@ await client.getPhotosByHashtag({ hashtag: 'unicorn' })
   //The query cursor 'after' maybe return an array, if array you need to convert like this: 
   let pointer = response.page_info.end_cursor;
   // this will try to convert array to json stringify
-	try{
-			pointer = JSON.parse(pointer);
-			pointer = JSON.stringify(pointer);
-	}catch(e){
-			console.log('Pointer is not array!, don't need to be converted!');
-	}
+  try{
+	pointer = JSON.parse(pointer);
+	pointer = JSON.stringify(pointer);
+  }catch(e){
+	console.log('Pointer is not array!, don't need to be converted!');
+  }
   
   ```
   > This will return the media comments.
   - `params`
-    - `shortcode`: The shortcode media like this: https://www.instagram.com/p/B-00000000/, only put shortcode like this : B-000000000
+    - `shortcode`: The shortcode media
     - `first`:  A `number` of records to return max is `49`
     - `after`: The query cursor `String` for pagination
-
+### likeComment(params)
+```js
+await client.likeComment(commentId)
+```
+> Like a media comment item.
+- `params`
+  - `commentId`: The comment media id
+### unlikeComment(params)
+```js
+await client.like(commentId)
+```
+> Like a media comment item.
+- `params`
+  - `commentId`: The comment media id
+### getUserMediaTagged(params)
+  ```js
+  await client.getUserMediaTagged({ id: 'user id', first: 12, after: '' })
+  ```
+  > This will return the media tagged
+  - `params`
+    - `id`: The user target account id
+    - `first`:  A `number` of records to return max is `49`
+    - `after`: The query cursor `String` for pagination
 ## License
 
 MIT © [Jesús Lobos](https://jlobos.com/)
