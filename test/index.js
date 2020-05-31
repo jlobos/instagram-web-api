@@ -7,8 +7,8 @@ const { USER_NAME, PASSWORD } = process.env
 const client = new Instagram({ username: USER_NAME, password: PASSWORD })
 console.log(USER_NAME, PASSWORD)
 
-let commentId
-let nextPageToken
+let commentId;
+let nextPageToken;
 
 test.before(async t => {
   await client.login()
@@ -91,7 +91,7 @@ test('getStoryReelFeed', async t => {
   const reels = await client.getStoryReelFeed()
 
   t.true(Array.isArray(reels))
-  t.true(reels.length > 0)
+  t.true(typeof reels.length > 0)
 })
 
 test('getStoryReels', async t => {
@@ -279,4 +279,28 @@ test('getHome', async t => {
     'KGEAxpEdUwUrxxoJvxRoQeXFGooSlADHZ8UaDdSWbnOIxxoUUhyciJ7EGlxNlZjaYcUaXTgUM00qyBrgBhUsLezIGqVTlxqausga5W-fVax9xRryaBdN1EnIGvdQFgzxoMgaFoLO7v7xWQA='
   )
   t.is(status, 'ok')
+})
+
+test('getUserMediaTagged', async t => {
+  const response = await client.getUserMediaTagged({ id: '2094200507', first: '12', after: '' })
+  t.true(Number.isInteger(response.count));
+  t.true(Array.isArray(response.edges));
+  t.true(typeof response.page_info === 'object')
+})
+
+test.after('likeComment', async t => {
+  const { status } = await client.likeComment('17861464873887827');
+  t.is(status, 'ok')
+})
+
+test.after('unlikeComment', async t => {
+  const { status } = await client.unlikeComment('17861464873887827');
+  t.is(status, 'ok')
+})
+
+test('uploadPhoto', async t => {
+
+  const response = await client.uploadPhoto({ photo: 'https://github.githubassets.com/images/modules/open_graph/github-mark.png', caption: 'testing', configureLocale: 'feed'});
+
+  t.is(response.status, 'ok')
 })
