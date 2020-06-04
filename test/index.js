@@ -64,6 +64,14 @@ test('getMediaByShortcode', async t => {
   t.is(shortcodeMedia.id, media.GraphImage.id)
 })
 
+test('getUserId', async t => {
+  const userId = await client.getUserId({
+    username: users.Instagram.username
+  })
+
+  t.is(userId, users.Instagram.id)
+})
+
 test('getUserByUsername', async t => {
   const user = await client.getUserByUsername({
     username: users.Instagram.username
@@ -164,6 +172,22 @@ test('getFollowers', async t => {
   t.true(Array.isArray(followers.data))
 })
 
+test('getFollowersId', async t => {
+  const followersId = await client.getFollowersId({
+    userId: users.Instagram.id
+  })
+
+  t.true(Array.isArray(followersId))
+})
+
+test('getFollowersUsername', async t => {
+  const followersUsername = await client.getFollowersUsername({
+    userId: users.Instagram.id
+  })
+
+  t.true(Array.isArray(followersUsername))
+})
+
 test('getFollowings', async t => {
   const followings = await client.getFollowings({
     userId: users.Instagram.id
@@ -171,6 +195,22 @@ test('getFollowings', async t => {
 
   t.true('count' in followings)
   t.true(Array.isArray(followings.data))
+})
+
+test('getFollowingsId', async t => {
+  const followingsId = await client.getFollowingsId({
+    userId: users.Instagram.id
+  })
+
+  t.true(Array.isArray(followingsId))
+})
+
+test('getFollowingsUsername', async t => {
+  const followingsUsername = await client.getFollowingsUsername({
+    userId: users.Instagram.id
+  })
+
+  t.true(Array.isArray(followingsUsername))
 })
 
 test('addComment', async t => {
