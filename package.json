@@ -60,7 +60,9 @@
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8",
     "tough-cookie": "^3.0.1",
-    "useragent-from-seed": "^1.0.1"
+    "useragent-from-seed": "^1.0.1",
+    "buffer-image-size": "^0.6.4",
+    "sharp": "^0.25.3"
   },
   "devDependencies": {
     "ava": "^2.4.0",
