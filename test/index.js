@@ -7,8 +7,9 @@ const { USER_NAME, PASSWORD } = process.env
 const client = new Instagram({ username: USER_NAME, password: PASSWORD })
 console.log(USER_NAME, PASSWORD)
 
-let commentId
-let nextPageToken
+let commentId;
+let nextPageToken;
+let mediaToDelete;
 
 test.before(async t => {
   await client.login()
@@ -279,4 +280,21 @@ test('getHome', async t => {
     'KGEAxpEdUwUrxxoJvxRoQeXFGooSlADHZ8UaDdSWbnOIxxoUUhyciJ7EGlxNlZjaYcUaXTgUM00qyBrgBhUsLezIGqVTlxqausga5W-fVax9xRryaBdN1EnIGvdQFgzxoMgaFoLO7v7xWQA='
   )
   t.is(status, 'ok')
+})
+
+test('uploadPhoto', async t => {
+
+  const {media, status} = await client.uploadPhoto({ photo: 'https://scontent.fbfh14-2.fna.fbcdn.net/v/t1.0-0/p526x296/100757711_2501752523258512_444154830210990080_n.png?_nc_cat=105&_nc_sid=730e14&_nc_ohc=gzaOkjtGuKUAX9hfbVy&_nc_ht=scontent.fbfh14-2.fna&oh=a1c5dcc08a5fc62674d2d065e75b55bb&oe=5EFBDE21', caption: 'testing', post: 'feed'});
+  if('pk' in media){
+	  mediaToDelete = media.pk;
+  }
+  t.true(typeof media.pk !== 'undefined')
+  t.is(status, 'ok');
+})
+
+test.after('deleteMedia', async t => {
+	const { did_delete, status } = await client.deleteMedia({mediaId: mediaToDelete});
+	t.is(did_delete, true);
+	t.is(status, 'ok');
+	
 })
