@@ -245,7 +245,7 @@ await client.deleteMedia({ mediaId: '1442533050805297981' })
 const photo = 'https://scontent-scl1-1.cdninstagram.com/t51.2885-15/e35/16465198_658888867648924_4042368904838774784_n.jpg'
 await client.uploadPhoto({ photo, caption: '❤️', post: 'feed' })
 ```
-> Upload a photo to Instagram. Works with all formats (api convert all to jpeg)
+> Upload a photo to Instagram. Only jpeg images allowed.
 - `params`
   - `photo`: A `String` of path file or URL
   - `caption`: The caption of photo. Default is ` `
