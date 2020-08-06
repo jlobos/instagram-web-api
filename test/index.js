@@ -7,12 +7,13 @@ const { USER_NAME, PASSWORD } = process.env
 const client = new Instagram({ username: USER_NAME, password: PASSWORD })
 console.log(USER_NAME, PASSWORD)
 
-let commentId;
-let nextPageToken;
-let mediaToDelete;
+let commentId
+let nextPageToken
+let userId
 
 test.before(async t => {
-  await client.login()
+  const { userId: id } = await client.login()
+  userId = id
   const profile = await client.getProfile()
   t.truthy(profile)
 })
@@ -283,18 +284,24 @@ test('getHome', async t => {
 })
 
 test('uploadPhoto', async t => {
-
-  const {media, status} = await client.uploadPhoto({ photo: 'https://tecnoblog.net/wp-content/uploads/2020/04/github-capa.jpg', caption: 'testing', post: 'feed'});
-  if('pk' in media){
-	  mediaToDelete = media.pk;
-  }
+  const { media, status } = await client.uploadPhoto({
+    photo: 'https://tecnoblog.net/wp-content/uploads/2020/04/github-capa.jpg',
+    caption: 'testing',
+    post: 'feed'
+  })
   t.true(typeof media.pk !== 'undefined')
-  t.is(status, 'ok');
+  t.is(status, 'ok')
 })
 
-test.after('deleteMedia', async t => {
-	const { did_delete, status } = await client.deleteMedia({mediaId: mediaToDelete});
-	t.is(did_delete, true);
-	t.is(status, 'ok');
-	
+test('deleteMedia', async t => {
+  const {
+    edge_owner_to_timeline_media: { edges: images }
+  } = await client._getPosts({ userId })
+  const [firstNode] = images
+  const imageID = firstNode.node.id
+
+  const { did_delete, status } = await client.deleteMedia({ mediaId: imageID })
+
+  t.is(did_delete, true)
+  t.is(status, 'ok')
 })
