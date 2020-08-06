@@ -1,6 +1,6 @@
 {
   "name": "instagram-web-api",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Instagram Private Web API client written in JS",
   "license": "MIT",
   "main": "lib/index.js",
@@ -66,7 +66,7 @@
     "ava": "^2.4.0",
     "eslint-config-prettier": "^2.10.0",
     "husky": "^3.0.9",
-    "lint-staged": "^9.4.3",
+    "lint-staged": "^10.2.11",
     "prettier": "^1.19.1",
     "xo": "^0.20.3"
   }
