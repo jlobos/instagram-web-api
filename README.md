@@ -83,6 +83,25 @@ const client = new Instagram({ username, password, cookieStore })
 })()
 ```
 
+## 2 Factor Authentication 
+Getting a [TOTP](https://en.wikipedia.org/wiki/Time-based_One-time_Password_algorithm) Token (called `secret` by Google Authenticator)
+1. Open Instagram from a mobile device
+2. Click your profile picture in the bottom right corner
+3. Open the hamburger menu on the top right
+4. Click `Settings`
+5. Click `Security`
+6. Click `Two-Factor Authentication`
+7. Click `Authentication App`
+8. Click `Set Up Another Way` at the bottom of the screen
+9. Copy that long token of random letters and numbers
+
+Authenticating using TOTP Token
+```js
+const client = new Instagram({ username, password, totp })
+```
+
+*SMS based 2FA is not yet supported*
+
 ## API Reference
 
 * [Instagram](#instagramcredentials-opts)
