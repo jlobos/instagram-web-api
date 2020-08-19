@@ -83,6 +83,41 @@ const client = new Instagram({ username, password, cookieStore })
 })()
 ```
 
+## 2 Factor Authentication
+
+The following 2FA methods are supported:
+- [Secret key](#getting-a-secret-key)
+- Six digit code (changes every 30 seconds)
+
+*SMS based 2FA is not yet supported*
+
+### Usage
+
+```js
+const client = new Instagram({ username, password, twoFA })
+```
+
+### Getting a secret key
+1. Open Instagram from a mobile device
+2. Click your profile picture in the bottom right corner
+3. Open the hamburger menu on the top right
+4. Click `Settings`
+5. Click `Security`
+6. Click `Two-Factor Authentication`
+7. Click `Authentication App`
+8. Click `Set Up Another Way` at the bottom of the screen
+9. Copy the long key that consists of random letters and numbers -> **This will be your secret key**
+10. Open Google Authenticator (or the app you use to store 2FA keys)
+11. In Google Authenticator click the plus icon at the botttom left of the screen
+12. Click `Enter a setup key`
+13. In the `Account name` field you can type anything you want to (ex. `Instagram (username)`)
+14. Paste the key you got from `step 9` to the `Your key` field
+15. Copy the 6 digit code that Google Authenticator has generated
+16. Go back to Instagram, and click `Next`
+17. Paste the token
+18. Click `Next` then click `done`
+
+
 ## API Reference
 
 * [Instagram](#instagramcredentials-opts)

@@ -2,10 +2,14 @@ import test from 'ava'
 import Instagram from '../lib'
 import { media, users, locations, tags } from '../helpers'
 
-const { USER_NAME, PASSWORD } = process.env
+const { USER_NAME, PASSWORD, TWOFA } = process.env
 
-const client = new Instagram({ username: USER_NAME, password: PASSWORD })
-console.log(USER_NAME, PASSWORD)
+const client = new Instagram({
+  username: USER_NAME,
+  password: PASSWORD,
+  twoFA : TWOFA
+})
+console.log(USER_NAME, PASSWORD, TWOFA)
 
 let commentId
 let nextPageToken
