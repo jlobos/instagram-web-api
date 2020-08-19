@@ -85,13 +85,17 @@ const client = new Instagram({ username, password, cookieStore })
 
 ## 2 Factor Authentication
 
-You can use the `twoFA` variable to login is using a secret key.
+The following 2FA methods are supported:
+- [Secret key](#getting-a-secret-key)
+- Six digit code (changes every 30 seconds)
+
+*SMS based 2FA is not yet supported*
+
+### Usage
 
 ```js
 const client = new Instagram({ username, password, twoFA })
 ```
-
-*SMS based 2FA is not yet supported*
 
 ### Getting a secret key
 1. Open Instagram from a mobile device
