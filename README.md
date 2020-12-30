@@ -98,6 +98,30 @@ const client = new Instagram({ username, password })
 })()
 ```
 
+Fetch following users' id from user's id.
+
+```js
+const Instagram = require('instagram-web-api')
+const { username, password } = process.env
+
+const client = new Instagram({ username, password })
+
+;(async () => {
+  await client.login()
+  const list = []
+  // Replace userId by your desired userId
+  const followers = await this.getFollowers({ userId, first: 100, after: '' })
+  const data = followers.data
+
+  for (let x = 0; x < data.length; x++) {
+    list.push(data[x].id)
+  }
+
+  console.log(list)
+  }
+})()
+```
+
 ## API Reference
 
 * [Instagram](#instagramcredentials-opts)
