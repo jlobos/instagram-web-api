@@ -83,6 +83,21 @@ const client = new Instagram({ username, password, cookieStore })
 })()
 ```
 
+Fetch user's id from username.
+```js
+const Instagram = require('instagram-web-api')
+const { username, password } = process.env
+
+const client = new Instagram({ username, password })
+
+;(async () => {
+  await client.login()
+  // Replace desiredUsername by your desired username
+  const user = await client.getUserByUsername({ username: "desiredUsername"})
+  console.log(`${username}'s id is ${user.id} !`)
+})()
+```
+
 ## API Reference
 
 * [Instagram](#instagramcredentials-opts)
