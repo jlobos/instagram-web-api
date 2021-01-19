@@ -83,6 +83,68 @@ const client = new Instagram({ username, password, cookieStore })
 })()
 ```
 
+Fetch user's id from username.
+```js
+const Instagram = require('instagram-web-api')
+const { username, password } = process.env
+
+const client = new Instagram({ username, password })
+
+;(async () => {
+  await client.login()
+  // Replace desiredUsername by your desired username
+  const user = await client.getUserByUsername({ desiredUsername })
+  console.log(`${user.username}'s id is ${user.id} !`)
+})()
+```
+
+Fetch followers' id from user's id. Same applies to followings' id except you need use `getFollowings()` instead of `getFollowers()`.
+
+```js
+const Instagram = require('instagram-web-api')
+const { username, password } = process.env
+
+const client = new Instagram({ username, password })
+
+;(async () => {
+  await client.login()
+  const list = []
+  // Replace userId by your desired userId
+  const followers = await client.getFollowers({ userId })
+  const data = followers.data
+
+  for (let x = 0; x < data.length; x++) {
+    list.push(data[x].id)
+  }
+
+  console.log(list)
+
+})()
+```
+Fetch followers' name from user's is. Same applies to followings' name except you need use `getFollowings()` instead of `getFollowers()`.
+
+```js
+const Instagram = require('instagram-web-api')
+const { username, password } = process.env
+
+const client = new Instagram({ username, password })
+
+;(async () => {
+  await client.login()
+  const list = []
+  // Replace userId by your desired user's id
+  const followers = await client.getFollowers({ userId })
+  const data = followers.data
+
+  for (let x = 0; x < data.length; x++) {
+    list.push(data[x].username)
+  }
+
+  console.log(list)
+
+})()
+```
+
 ## API Reference
 
 * [Instagram](#instagramcredentials-opts)
