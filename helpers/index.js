@@ -24,7 +24,8 @@ module.exports = {
       full_name: 'XENIA',
       id: '184028108',
       pk: 184028108,
-      username: 'xenia'
+      username: 'xenia',
+      highlightReelId: 17890694692269640
     }
   },
 

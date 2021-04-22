@@ -139,6 +139,25 @@ test('getStoryItemsByReel', async t => {
   t.true(Array.isArray(storyItems))
 })
 
+test('getHighlightReels', async t => {
+  const response = await client.getHighlightReels({ highlightReelIds: [users.Xenia.highlightReelId] })
+  t.true(Array.isArray(response))
+})
+
+test('getHighlightsByUsername', async t => {
+  const highlightItems = await client.getHighlightsByUsername({
+    username: users.Xenia.username
+  })
+
+  t.true(Array.isArray(highlightItems))
+})
+
+test('getHighlightItemsByReel', async t => {
+  const highlightItems = await client.getHighlightItemsByReel({ highlightReelId: users.Xenia.highlightReelId })
+
+  t.true(Array.isArray(highlightItems))
+})
+
 test('markStoryItemAsSeen', async t => {
   const storyItem = (
     await client.getStoryItemsByHashtag({

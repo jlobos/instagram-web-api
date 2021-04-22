@@ -501,6 +501,31 @@ await client.getPhotosByHashtag({ hashtag: 'unicorn' })
     - `first`:  A `number` of records to return max is `49`
     - `after`: The query cursor `String` for pagination
 
+### getHighlightReels(params)
+  ```js
+  await client.getHighlightReels({ highlightReelIds: [highlightReelId] })
+  ```
+  > This will return the data of multiple highlights
+- `params`
+  - `highlightReelIds`: An array of highlight reel id
+
+### getHighlightsByUsername(params)
+  ```js
+  await client.getHighlightsByUsername({ username })
+  ```
+  > This will return the highlights below a profile.
+- `params`
+  - `username`: The username
+
+### getHighlightItemsByReel(params)
+  ```js
+  await client.getHighlightItemsByReel({ highlightReelId })
+  ```
+  > This will return the highlight items based on the id of the highlight
+- `params`
+  - `highlightReelId`: The higlight reel id
+
+
 ## License
 
 MIT © [Jesús Lobos](https://jlobos.com/)
