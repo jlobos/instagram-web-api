@@ -1,15 +1,4 @@
-<h1 align="center">
-  <img width="72px" src="https://firebasestorage.googleapis.com/v0/b/random-storage-332ce.appspot.com/o/instagram.svg?alt=media&token=5fe11096-daee-43c1-8d5f-8a77c9f46485">
-</h1>
-
-<p align="center">
-  <a href="https://www.npmjs.com/package/instagram-web-api"><img alt="NPM version" src="https://badge.fury.io/js/instagram-web-api.svg"></a>
-  <a href="https://circleci.com/gh/jlobos/instagram-web-api"><img alt="Build Status" src="https://circleci.com/gh/jlobos/instagram-web-api.svg?style=shield"></a>
-  <a href="https://github.com/sindresorhus/xo"><img alt="XO code style" src="https://img.shields.io/badge/code_style-XO-5ed9c7.svg"></a>
-  
-</p>
-
-### A Instagram Private Web API client 🤳✨❤️
+### A Next Instagram Private Web API client 🤳✨❤️
 
 Simple, easy and very complete implementation of the Instagram private web API.
 
@@ -503,4 +492,4 @@ await client.getPhotosByHashtag({ hashtag: 'unicorn' })
 
 ## License
 
-MIT © [Jesús Lobos](https://jlobos.com/)
+MIT © [Jesús Lobos](https://jlobos.com/) & [Fskhri](https://github.com/fskhri)
